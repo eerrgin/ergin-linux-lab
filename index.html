@@ -1,223 +1,90 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="tr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ergin Linux Lab — Ergin Kaplan Atölyesi</title>
-  <meta name="author" content="Ergin Kaplan">
-  <meta name="description" content="Ergin Kaplan Atölyesi. Ergin Linux Lab ilk adımlar: terminal, temel komutlar ve iki küçük program.">
-  <style>
-    :root {
-      --ink: #1c1612;
-      --muted: #5e5348;
-      --paper: #f3ecdf;
-      --card: #fffaf3;
-      --line: #e3d5c4;
-      --pine: #243f34;
-      --pine-2: #1a3028;
-      --copper: #a64b28;
-      --chip: #efe4d4;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      background:
-        radial-gradient(1200px 400px at 10% -10%, #efe2cf 0%, transparent 50%),
-        var(--paper);
-      color: var(--ink);
-      font-family: Palatino, "Palatino Linotype", Georgia, serif;
-      line-height: 1.6;
-    }
-    a { color: var(--copper); }
-    a:hover { color: var(--ink); }
-    header {
-      background: var(--pine);
-      color: #f6f1e7;
-      padding: 28px 20px 22px;
-      border-bottom: 4px solid var(--copper);
-    }
-    header .icerik, main, footer .icerik { max-width: 820px; margin: 0 auto; }
-    .ust {
-      margin: 0 0 8px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      font-size: 12px;
-      color: #e7c7b4;
-    }
-    h1 { margin: 0; font-size: 40px; font-weight: 600; line-height: 1.1; }
-    header p { margin: 10px 0 0; max-width: 38em; color: #efe6d8; }
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 18px;
-    }
-    nav a {
-      color: #f6f1e7;
-      text-decoration: none;
-      border: 1px solid rgba(246, 241, 231, 0.35);
-      padding: 4px 10px;
-      font-size: 15px;
-    }
-    nav a:hover { background: rgba(255, 255, 255, 0.08); color: #fff; }
-    main { padding: 28px 20px 48px; }
-    section { margin: 0 0 28px; }
-    h2 {
-      font-size: 26px;
-      margin: 0 0 10px;
-      color: var(--pine-2);
-    }
-    h3 { margin: 18px 0 6px; font-size: 20px; }
-    p { margin: 0 0 12px; }
-    ol, ul { margin: 0 0 12px; padding-left: 1.2em; }
-    li { margin: 4px 0; }
-    .kart {
-      background: var(--card);
-      border: 1px solid var(--line);
-      padding: 16px 18px;
-      margin: 12px 0;
-    }
-    table { width: 100%; border-collapse: collapse; background: var(--card); }
-    th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
-    th { background: var(--chip); font-weight: 600; }
-    code, pre { font-family: "Cascadia Mono", "Cascadia Code", Consolas, ui-monospace, monospace; }
-    code {
-      background: var(--chip);
-      padding: 1px 5px;
-      font-size: 0.92em;
-    }
-    pre {
-      background: var(--pine-2);
-      color: #f4ecdf;
-      padding: 14px 16px;
-      overflow-x: auto;
-      line-height: 1.45;
-      margin: 8px 0 12px;
-    }
-    pre code { background: transparent; color: inherit; padding: 0; }
-    .uyari {
-      border-left: 4px solid var(--copper);
-      background: #f8efe6;
-      padding: 12px 14px;
-      margin: 12px 0;
-    }
-    footer {
-      background: var(--pine-2);
-      color: #efe6d8;
-      padding: 22px 20px;
-    }
-    footer a { color: #f0c2ae; }
-    .kucuk { color: var(--muted); font-size: 15px; }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Ergin Kaplan">
+<meta name="description" content="Ergin Linux Lab: terminalden sistem mühendisliğine, güvenli ve ölçülebilir uygulamalı öğrenme rotası.">
+<meta name="theme-color" content="#172e26">
+<title>Ergin Linux Lab · Sistem Mühendisliği Atölyesi</title>
+<style>
+:root{color-scheme:light;--ink:#201a16;--muted:#63594e;--paper:#f3ecdf;--card:#fffaf3;--line:#dfd0bd;--pine:#203e32;--deep:#142a22;--copper:#a54d2d;--gold:#d7b58a;--code:#111d19}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 10% 0,#e8dac5 0,transparent 45%),var(--paper);color:var(--ink);font:16px/1.65 Georgia,"Times New Roman",serif}a{color:var(--copper);text-underline-offset:3px}a:hover{color:var(--deep)}.wrap{width:min(1080px,calc(100% - 32px));margin-inline:auto}header{background:var(--pine);color:#f5eee2;border-bottom:4px solid var(--copper);padding:28px 0 30px}.eyebrow,.label{font:11px/1.5 ui-monospace,Consolas,monospace;letter-spacing:.14em;text-transform:uppercase;color:#d8b99b}.eyebrow{margin:0 0 10px}h1,h2,h3,p{margin-top:0}h1{font-size:clamp(38px,7vw,72px);line-height:1.02;letter-spacing:-.045em;font-weight:500;margin:0;max-width:15ch}h1 em,h2 em{font-style:italic;color:#ddb18d}header .intro{max-width:68ch;color:#e4dbcd;font-size:18px;margin:18px 0 0}nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}nav a{color:#f7eee0;text-decoration:none;border:1px solid #ffffff38;border-radius:999px;padding:6px 12px;font-size:13px}nav a:hover{background:#ffffff12;color:#fff}main{padding:30px 0 64px}section{margin:0 0 48px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:16px}.section-head h2{font-size:clamp(27px,4vw,40px);line-height:1.1;margin:4px 0 0;color:var(--pine)}.section-head p{color:var(--muted);max-width:48ch;margin:0}.label{color:var(--copper)}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.card{min-width:0;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;box-shadow:0 12px 28px #35201008}.card h3{font-size:22px;color:var(--pine);line-height:1.2;margin:9px 0}.card p{color:var(--muted);margin-bottom:0}.number{font:11px ui-monospace,Consolas,monospace;letter-spacing:.1em;color:var(--copper)}.spotlight{background:var(--deep);color:#f3eddf;border-radius:14px;padding:clamp(18px,4vw,32px);display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}.spotlight h2{font-size:clamp(25px,4vw,38px);line-height:1.1;margin:4px 0 14px}.spotlight p,.spotlight li{color:#ddd4c7}.spotlight .label{color:#dfb994}pre{background:var(--code);color:#edf0e8;border:1px solid #41534a;border-radius:9px;padding:15px;overflow:auto;line-height:1.55;font:13px/1.6 ui-monospace,Consolas,monospace;margin:12px 0}code{font: .92em ui-monospace,Consolas,monospace;background:#e9dfd1;padding:2px 5px;border-radius:4px;overflow-wrap:anywhere}pre code{background:none;padding:0}.note{border-left:4px solid var(--copper);padding:12px 15px;background:#f7e9dc;color:#554337;border-radius:0 8px 8px 0}.phase-list{display:grid;gap:10px}.phase{display:grid;grid-template-columns:72px minmax(0,1fr);gap:15px;background:#fff9f1c9;border:1px solid var(--line);border-radius:10px;padding:17px}.phase-no{font:13px ui-monospace,Consolas,monospace;color:var(--copper);padding-top:4px}.phase h3{margin:0 0 5px;color:var(--pine);font-size:21px}.phase p{margin:0;color:var(--muted)}.phase .tag{display:inline-block;font:10px ui-monospace,Consolas,monospace;text-transform:uppercase;letter-spacing:.06em;color:var(--copper);border:1px solid #d7bca5;padding:3px 7px;border-radius:999px;margin-bottom:7px}.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.link-list{padding-left:19px}.link-list li{margin:8px 0}footer{background:var(--deep);color:#d9d0c4;padding:25px 0}footer p{margin:4px 0}.small{font-size:13px;color:var(--muted)}footer .small{color:#b5b8ad}@media(max-width:820px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.spotlight{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:10px}}@media(max-width:560px){.wrap{width:min(100% - 22px,1080px)}header{padding:23px 0}.grid,.two{grid-template-columns:1fr}.card{padding:16px}.phase{grid-template-columns:46px minmax(0,1fr);padding:13px;gap:10px}nav{gap:6px}nav a{font-size:12px;padding:6px 9px}.section-head h2{font-size:30px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+</style>
 </head>
 <body>
-  <header>
-    <div class="icerik">
-      <p class="ust">Ergin Kaplan Atölyesi</p>
-      <h1>Ergin Linux Lab</h1>
-      <p>Linux'ta zayıf hissediyorsan burası ilk oturuş. Terminal, on komut, iki küçük program. Yazan: Ergin Kaplan.</p>
-      <nav>
-        <a href="#bugun">Bugün</a>
-        <a href="#komutlar">Komutlar</a>
-        <a href="#yol">Yol</a>
-        <a href="#ornekler">Örnekler</a>
-        <a href="#dikkat">Dikkat</a>
-        <a href="ergin-kaplan-atolye-talimat.md">Talimat</a>
-      </nav>
-    </div>
-  </header>
-  <main>
-    <section id="bugun">
-      <h2>Bugün şunu yap</h2>
-      <ol>
-        <li>Terminali aç. Birçok masaüstünde <code>Ctrl+Alt+T</code> işe yarar.</li>
-        <li><code>pwd</code> yaz. Bulunduğun yerin adresini gör.</li>
-        <li><code>ls</code> yaz. Bu dizindeki adları gör.</li>
-        <li>Bir deneme dizini aç, içine bir satır yaz.</li>
-        <li>Aşağıdaki iki Ergin Kaplan Atölyesi örneğini çalıştır.</li>
-      </ol>
-      <p class="kucuk">Uzun anlatım, aynı klasörde: <a href="ergin-kaplan-atolye-talimat.md">ergin-kaplan-atolye-talimat.md</a></p>
-    </section>
+<header><div class="wrap">
+<p class="eyebrow">Ergin Kaplan Atölyesi · Sistemler / 01</p>
+<h1>Ergin Linux Lab:<br><em>makinenin içini oku.</em></h1>
+<p class="intro">Terminal yalnızca komut yazılan bir pencere değil. Süreçlerin, dosya izinlerinin, servislerin, ağın ve kaynakların birbirine nasıl bağlandığını takip ettiğin çalışma masası.</p>
+<nav aria-label="Laboratuvar bölümleri"><a href="#baslangic">İlk oturum</a><a href="#rota">Mühendislik rotası</a><a href="#buyuk-projeler">Üst projeler</a><a href="#lisans">Lisans defteri</a><a href="README.md">README</a></nav>
+</div></header>
+<main class="wrap">
+<section id="baslangic">
+<div class="section-head"><div><p class="label">00 / İlk oturum</p><h2>Önce sistemi dinle.</h2></div><p>İlk deney hiçbir şeyi değiştirmez. Bilgi toplar, neye baktığını öğrenir, sonra bir varsayım kurarsın.</p></div>
+<div class="spotlight">
+<div><p class="label">GÜVENLİ BAŞLANGIÇ</p><h2>Salt-okunur sistem özeti</h2><p>Depoyu indirip küçük tanılama aracını kendi makinen üzerinde çalıştır. Betik paket kurmaz, dosya silmez, servis değiştirmez ve yönetici yetkisi istemez.</p>
+<pre><code>git clone https://github.com/eerrgin/ergin-linux-lab.git
+cd ergin-linux-lab
+sh lablar/oku-sistem.sh</code></pre>
+<p class="small">Çıktı makinenin sürümünü, kaynak durumunu ve bazı süreç/servis özetlerini gösterebilir. Paylaşmadan önce kullanıcı adı, aygıt bilgisi ve ağ ayrıntılarını gözden geçir.</p></div>
+<div><p class="label">ELLE DE DENE</p><h2>Beş komut, beş gözlem</h2>
+<pre><code>pwd
+cat /etc/os-release
+id
+df -h
+free -h
+ps -eo pid,comm,%cpu,%mem --sort=-%cpu | head</code></pre>
+<p>Komutun ne döndürdüğünü yazmak yetmez. Hangi kaynağı ölçtüğünü, hangi kullanıcı yetkisiyle çalıştığını ve sonucun neyi kanıtlamadığını da not et.</p></div>
+</div>
+<p class="note"><strong>Çalışma kuralı:</strong> Bilmediğin bir komutu önce <code>man komut</code> veya <code>komut --help</code> ile incele. İlk aşamada <code>sudo</code>, <code>rm -rf</code>, disk yazma araçları ve rastgele internet komutları yok. Hataları sanal makinede üret.</p>
+</section>
 
-    <section id="komutlar">
-      <h2>İlk komutlar</h2>
-      <p>Komut bir program adıdır. Yanındaki sözcükler argümandır. Enter ile çalışır. İstem geri gelince iş bitmiştir.</p>
-      <table>
-        <thead>
-          <tr><th>Yaz</th><th>Ne olur</th></tr>
-        </thead>
-        <tbody>
-          <tr><td><code>pwd</code></td><td>Bulunduğun dizinin tam yolu.</td></tr>
-          <tr><td><code>ls</code></td><td>Görünür dosya ve dizin adları.</td></tr>
-          <tr><td><code>ls -la</code></td><td>Ayrıntı ve nokta ile başlayan gizli adlar.</td></tr>
-          <tr><td><code>cd yol</code></td><td>O dizine girer. Yalın <code>cd</code> eve döner.</td></tr>
-          <tr><td><code>cd ..</code></td><td>Bir üst dizine çıkar.</td></tr>
-          <tr><td><code>mkdir ad</code></td><td>Yeni dizin açar.</td></tr>
-          <tr><td><code>cp kaynak hedef</code></td><td>Kopyalar.</td></tr>
-          <tr><td><code>mv kaynak hedef</code></td><td>Taşır ya da adı değiştirir.</td></tr>
-          <tr><td><code>rm dosya</code></td><td>Dosyayı siler. Çöp kutusu yoktur.</td></tr>
-          <tr><td><code>cat dosya</code></td><td>Dosyanın içini ekrana yazar.</td></tr>
-          <tr><td><code>man ls</code></td><td>Kılavuzu açar. Çıkış: <code>q</code></td></tr>
-        </tbody>
-      </table>
-      <div class="kart">
-        <h3>Elinle dene</h3>
-        <pre><code>mkdir ergin-kaplan-deneme
-cd ergin-kaplan-deneme
-echo "Ergin Kaplan Atölyesi" > not.txt
-cat not.txt
-cd ..</code></pre>
-        <p><code>Tab</code> adı tamamlar. Yukarı ok eski komutu getirir. <code>Ctrl+C</code> süren işi keser, dosyayı silmez.</p>
-      </div>
-    </section>
+<section id="rota">
+<div class="section-head"><div><p class="label">01 / Mühendislik rotası</p><h2>Komuttan sisteme.</h2></div><p>Her katman bir öncekinin üzerine kuruluyor. İlerleme ölçüsü komut ezberi değil, bir sistem davranışını açıklayıp deneyle doğrulayabilmek.</p></div>
+<div class="phase-list">
+<article class="phase"><div class="phase-no">01 / TEMEL</div><div><span class="tag">Başlangıç</span><h3>Kabuk, metin akışı ve dosya sistemi</h3><p>Mutlak/göreli yollar, alıntılama, yönlendirme, pipe, exit status, glob, izin bitleri, kullanıcı/grup, inode ve mount. Küçük shell betikleri yaz; başarı ve hata durumlarını ayrı ele al.</p></div></article>
+<article class="phase"><div class="phase-no">02 / İŞLETİM</div><div><span class="tag">Orta seviye</span><h3>Süreçler, servisler ve kaynaklar</h3><p>PID/PPID, sinyaller, zombie süreçler, systemd unit bağımlılıkları, journal kayıtları, bellek ve disk baskısı. Bir servis neden başlamıyor sorusuna günlük kayıtları ve exit code ile yanıt üret.</p></div></article>
+<article class="phase"><div class="phase-no">03 / AĞ</div><div><span class="tag">Uygulamalı</span><h3>DNS'ten sokete giden yol</h3><p>Adresleme, rota tablosu, DNS, TCP/UDP, dinleyen soketler, TLS sertifika zinciri ve hata ayıklama. Yalnızca kendi makinen veya açık izin verilen laboratuvar hedefleri üzerinde ölçüm yap.</p></div></article>
+<article class="phase"><div class="phase-no">04 / GÜVENLİK</div><div><span class="tag">Sistem güvenliği</span><h3>En az ayrıcalık ve güvenilir paketler</h3><p>sudoers ilkeleri, capabilities, ACL, SSH anahtarları, servis sandboxing, imzalı paket kaynakları, yedek geri yükleme provası ve olay sonrası zaman çizelgesi. Her değişikliğe geri alma planı eşlik etsin.</p></div></article>
+<article class="phase"><div class="phase-no">05 / İÇLER</div><div><span class="tag">İleri seviye</span><h3>Sistem çağrısından çekirdek gözlemine</h3><p><code>strace</code> ile sistem çağrıları, <code>perf</code> ile ölçüm, namespaces/cgroups ile izolasyon, eBPF ile gözlem ve QEMU sanal makinesinde çekirdek denemeleri. Önce ölçüm, sonra optimizasyon.</p></div></article>
+<article class="phase"><div class="phase-no">06 / ÜRETİM</div><div><span class="tag">Platform mühendisliği</span><h3>Tekrarlanabilir kurulum ve dağıtım</h3><p>CI, test matrisi, yapılandırma yönetimi, SBOM, sürüm sabitleme, imza doğrulama, log/metric/trace ayrımı, hata bütçesi ve geri dönüş provası. Makinenin yerine kurulum adımları da sürümlenebilir olsun.</p></div></article>
+</div>
+</section>
 
-    <section id="yol">
-      <h2>Yol</h2>
-      <p>Yol, dosyanın adresidir. <code>/</code> ile başlıyorsa tam yoldur. Başlamıyorsa bulunduğun yere göredir.</p>
-      <ul>
-        <li><code>/</code> kök. Her şey bunun altındadır.</li>
-        <li><code>~</code> senin ev dizinin.</li>
-        <li><code>.</code> burada. <code>..</code> bir üst.</li>
-      </ul>
-      <p>Şaşırırsan <code>pwd</code> yaz. Nerede olduğunu bilmeden silme.</p>
-    </section>
+<section id="buyuk-projeler">
+<div class="section-head"><div><p class="label">02 / Üst projeler</p><h2>Atölyeyi büyüten işler.</h2></div><p>Bu projeler küçük ve ölçülebilir başlangıçlarla ilerler. Her biri için README, test planı, tehdit modeli ve “ne yapmıyor” bölümü tutulur.</p></div>
+<div class="grid">
+<article class="card"><span class="number">LNX / 01</span><h3>Kernel Atlas</h3><p>Bir süreç başlatıldığında oluşan sistem çağrılarını, dosya erişimini ve çıkış kodunu izleyen; örnek kayıtları açıklayan bir gözlem defteri. Başlangıç <code>strace</code>, ileri adım kontrollü eBPF.</p></article>
+<article class="card"><span class="number">LNX / 02</span><h3>Rootless Runtime Lab</h3><p>Namespace, cgroup, mount ve ağ izolasyonunu rootless kapsayıcıda deneyimle. Kaynak sınırlarını ve kaçış risklerini laboratuvar içinde belgeleyen küçük bir uygulama.</p></article>
+<article class="card"><span class="number">LNX / 03</span><h3>Supply-Chain Ledger</h3><p>Kurulu paket sürümlerini, kaynak depolarını, imza kontrolünü ve SPDX lisans kimliklerini raporla. Bulgu ile kesin hükmü ayır; bilinmeyen lisansı “onaylı” sayma.</p></article>
+<article class="card"><span class="number">LNX / 04</span><h3>Service Failure Gym</h3><p>Yerel bir örnek serviste kasıtlı yapılandırma hatası, zaman aşımı ve kaynak baskısı üret. Log, metrik ve kurtarma süresini ölç; gerçek hizmete dokunma.</p></article>
+<article class="card"><span class="number">LNX / 05</span><h3>Tiny Init / Process Watch</h3><p>C ile çocuk süreçleri yöneten küçük bir demo; sinyaller, wait/waitpid ve kapanış davranışını test et. Gerçek init sisteminin yerine kurulmaz.</p></article>
+<article class="card"><span class="number">LNX / 06</span><h3>Reproducible Build Bench</h3><p>Aynı kaynak için iki temiz ortamda derleme yap; artefakt karmalarını karşılaştır, derleyici/sürüm/provenance kaydı oluştur ve farkların nedenini açıkla.</p></article>
+</div>
+<p style="margin-top:14px"><a href="docs/ileri-yol.md">Projelerin adım adım uygulama planı ↗</a> · <a href="lablar/">Laboratuvar betikleri ↗</a></p>
+</section>
 
-    <section id="ornekler">
-      <h2>İki küçük program</h2>
-      <p>Komutları, bu depoyu aldığın dizinde yaz. <code>ls</code> içinde <code>ornekler</code> görünmeli.</p>
+<section id="lisans">
+<div class="section-head"><div><p class="label">03 / Lisans defteri</p><h2>Özgür yazılım, koşulsuz kopya değildir.</h2></div><p>Tek bir Linux kurulumu farklı lisanslar taşıyan onlarca bileşen içerebilir. Dosya bazında iz sürmek mühendislik işinin parçasıdır.</p></div>
+<div class="two">
+<article class="card"><h3>Çekirdek ve dağıtım</h3><p>Linux çekirdeği GPL-2.0-only lisanslıdır; çekirdek ağacındaki bazı dosyalarda ayrıca belirtilmiş lisanslar bulunabilir. Dağıtımın paketleri ve firmware'i ayrı ayrı incelenmelidir. <a href="https://docs.kernel.org/process/license-rules.html" target="_blank" rel="noopener noreferrer">Çekirdek lisans kuralları ↗</a></p></article>
+<article class="card"><h3>Bu deponun kendi durumu</h3><p>Bu laboratuvardaki özgün metin ve örnekler <code>BELIRT.md</code> kapsamında tüm hakları saklı olarak tutulur. GitHub'da herkese açık olmak, başkalarına otomatik yeniden dağıtım veya değiştirme izni vermez. Bu depo başka projelerin lisansını değiştirmez.</p></article>
+</div>
+<p class="note">Bir paketi taşımadan, kodu alıntılamadan veya ikili dosya dağıtmadan önce lisansı, telif bildirimini, kaynak sunma şartını ve varsa firmware kısıtlarını kontrol et. Bu sayfa hukuki görüş değildir; lisans kaydı ve inceleme alışkanlığı için teknik bir çalışma alanıdır.</p>
+<p><a href="docs/lisans-ve-kaynak.md">Lisans ve kaynak kontrol listesi ↗</a></p>
+</section>
 
-      <div class="kart">
-        <h3>ergin-kaplan-atolye-merhaba.c</h3>
-        <p>Adını okur, sözcüğün bayt sayısını yazar. Derleyici kaynak kodu çalıştırılabilir dosyaya çevirir.</p>
-        <pre><code>cc -std=c11 -Wall -Wextra -o ergin-kaplan-atolye-merhaba ornekler/ergin-kaplan-atolye-merhaba.c
-./ergin-kaplan-atolye-merhaba
-./ergin-kaplan-atolye-merhaba Ergin</code></pre>
-        <p><code>./</code> "bu dizindeki dosya" demektir. Ad iki sözcükse tırnak gerekir: <code>"Ergin Kaplan"</code>.</p>
-      </div>
-
-      <div class="kart">
-        <h3>ergin-kaplan-atolye-dizin.sh</h3>
-        <p>Dizini silmez. Kim olduğunu, nerede olduğunu ve içeride kaç dosya durduğunu yazar.</p>
-        <pre><code>sh ornekler/ergin-kaplan-atolye-dizin.sh
-sh ornekler/ergin-kaplan-atolye-dizin.sh /tmp</code></pre>
-      </div>
-    </section>
-
-    <section id="dikkat">
-      <h2>Dikkat</h2>
-      <div class="uyari">
-        <p><code>rm</code> sildiğini geri getirmez. Anlamadığın satırda <code>sudo</code> kullanma; o satır yönetici yetkisiyle çalışır. İnternetten kopyalanan uzun komutu, ne yaptığını bilmeden basma.</p>
-        <p>Denemeyi kendi evinde ya da <code>/tmp</code> altında yap. Ergin Kaplan Atölyesi örnekleri kasıtlı olarak dar tutuldu: selam ve dizin özeti.</p>
-      </div>
-      <p>Aynı anlatımın düz yazısı: <a href="ergin-kaplan-atolye-talimat.md">ergin-kaplan-atolye-talimat.md</a></p>
-    </section>
-  </main>
-  <footer>
-    <div class="icerik">
-      <p>© 2026 Ergin Kaplan. Ergin Linux Lab. Ergin Kaplan Atölyesi. Tüm hakları saklıdır.</p>
-      <p>Bu sayfa ve örnekler Ergin Kaplan tarafından atölye için yazıldı. Başka bir kılavuzun kopyası değildir. <a href="BELIRT.md">Hak bildirimi</a>.</p>
-    </div>
-  </footer>
+<section id="kaynaklar">
+<div class="section-head"><div><p class="label">04 / Referanslar</p><h2>Asıl kaynağı oku.</h2></div><p>Özetler yön buldurur; teknik kararı dağıtım ve bileşenin kendi belgesiyle doğrula.</p></div>
+<ul class="link-list">
+<li><a href="https://docs.kernel.org/" target="_blank" rel="noopener noreferrer">Linux kernel documentation</a> · çekirdek mimarisi ve geliştirme</li>
+<li><a href="https://www.kernel.org/category/faq.html" target="_blank" rel="noopener noreferrer">kernel.org FAQ</a> · çekirdek ve firmware ayrımı</li>
+<li><a href="https://spdx.org/licenses/" target="_blank" rel="noopener noreferrer">SPDX License List</a> · lisans kimlikleri</li>
+<li><a href="https://www.freedesktop.org/software/systemd/man/latest/" target="_blank" rel="noopener noreferrer">systemd manual pages</a> · servisler ve sistem günlükleri</li>
+</ul>
+</section>
+</main>
+<footer><div class="wrap"><p>Ergin Linux Lab · Ergin Kaplan Atölyesi</p><p class="small">Önce gözlemle. Sonra varsayım kur. Ölçmeden iyileştirme yaptığını söyleme.</p><p class="small">© 2026 Ergin Kaplan · <a href="BELIRT.md">Hak bildirimi</a> · <a href="docs/lisans-ve-kaynak.md">Lisans notları</a></p></div></footer>
 </body>
 </html>
