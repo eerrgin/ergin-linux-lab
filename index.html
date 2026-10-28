@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ergin Linux Lab — Ergin Kaplan Atölyesi</title>
+  <meta name="author" content="Ergin Kaplan">
+  <meta name="description" content="Ergin Kaplan Atölyesi. Ergin Linux Lab ilk adımlar: terminal, temel komutlar ve iki küçük program.">
+  <style>
+    :root {
+      --ink: #1c1612;
+      --muted: #5e5348;
+      --paper: #f3ecdf;
+      --card: #fffaf3;
+      --line: #e3d5c4;
+      --pine: #243f34;
+      --pine-2: #1a3028;
+      --copper: #a64b28;
+      --chip: #efe4d4;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(1200px 400px at 10% -10%, #efe2cf 0%, transparent 50%),
+        var(--paper);
+      color: var(--ink);
+      font-family: Palatino, "Palatino Linotype", Georgia, serif;
+      line-height: 1.6;
+    }
+    a { color: var(--copper); }
+    a:hover { color: var(--ink); }
+    header {
+      background: var(--pine);
+      color: #f6f1e7;
+      padding: 28px 20px 22px;
+      border-bottom: 4px solid var(--copper);
+    }
+    header .icerik, main, footer .icerik { max-width: 820px; margin: 0 auto; }
+    .ust {
+      margin: 0 0 8px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: 12px;
+      color: #e7c7b4;
+    }
+    h1 { margin: 0; font-size: 40px; font-weight: 600; line-height: 1.1; }
+    header p { margin: 10px 0 0; max-width: 38em; color: #efe6d8; }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+    nav a {
+      color: #f6f1e7;
+      text-decoration: none;
+      border: 1px solid rgba(246, 241, 231, 0.35);
+      padding: 4px 10px;
+      font-size: 15px;
+    }
+    nav a:hover { background: rgba(255, 255, 255, 0.08); color: #fff; }
+    main { padding: 28px 20px 48px; }
+    section { margin: 0 0 28px; }
+    h2 {
+      font-size: 26px;
+      margin: 0 0 10px;
+      color: var(--pine-2);
+    }
+    h3 { margin: 18px 0 6px; font-size: 20px; }
+    p { margin: 0 0 12px; }
+    ol, ul { margin: 0 0 12px; padding-left: 1.2em; }
+    li { margin: 4px 0; }
+    .kart {
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 16px 18px;
+      margin: 12px 0;
+    }
+    table { width: 100%; border-collapse: collapse; background: var(--card); }
+    th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { background: var(--chip); font-weight: 600; }
+    code, pre { font-family: "Cascadia Mono", "Cascadia Code", Consolas, ui-monospace, monospace; }
+    code {
+      background: var(--chip);
+      padding: 1px 5px;
+      font-size: 0.92em;
+    }
+    pre {
+      background: var(--pine-2);
+      color: #f4ecdf;
+      padding: 14px 16px;
+      overflow-x: auto;
+      line-height: 1.45;
+      margin: 8px 0 12px;
+    }
+    pre code { background: transparent; color: inherit; padding: 0; }
+    .uyari {
+      border-left: 4px solid var(--copper);
+      background: #f8efe6;
+      padding: 12px 14px;
+      margin: 12px 0;
+    }
+    footer {
+      background: var(--pine-2);
+      color: #efe6d8;
+      padding: 22px 20px;
+    }
+    footer a { color: #f0c2ae; }
+    .kucuk { color: var(--muted); font-size: 15px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="icerik">
+      <p class="ust">Ergin Kaplan Atölyesi</p>
+      <h1>Ergin Linux Lab</h1>
+      <p>Linux'ta zayıf hissediyorsan burası ilk oturuş. Terminal, on komut, iki küçük program. Yazan: Ergin Kaplan.</p>
+      <nav>
+        <a href="#bugun">Bugün</a>
+        <a href="#komutlar">Komutlar</a>
+        <a href="#yol">Yol</a>
+        <a href="#ornekler">Örnekler</a>
+        <a href="#dikkat">Dikkat</a>
+        <a href="ergin-kaplan-atolye-talimat.md">Talimat</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section id="bugun">
+      <h2>Bugün şunu yap</h2>
+      <ol>
+        <li>Terminali aç. Birçok masaüstünde <code>Ctrl+Alt+T</code> işe yarar.</li>
+        <li><code>pwd</code> yaz. Bulunduğun yerin adresini gör.</li>
+        <li><code>ls</code> yaz. Bu dizindeki adları gör.</li>
+        <li>Bir deneme dizini aç, içine bir satır yaz.</li>
+        <li>Aşağıdaki iki Ergin Kaplan Atölyesi örneğini çalıştır.</li>
+      </ol>
+      <p class="kucuk">Uzun anlatım, aynı klasörde: <a href="ergin-kaplan-atolye-talimat.md">ergin-kaplan-atolye-talimat.md</a></p>
+    </section>
+
+    <section id="komutlar">
+      <h2>İlk komutlar</h2>
+      <p>Komut bir program adıdır. Yanındaki sözcükler argümandır. Enter ile çalışır. İstem geri gelince iş bitmiştir.</p>
+      <table>
+        <thead>
+          <tr><th>Yaz</th><th>Ne olur</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>pwd</code></td><td>Bulunduğun dizinin tam yolu.</td></tr>
+          <tr><td><code>ls</code></td><td>Görünür dosya ve dizin adları.</td></tr>
+          <tr><td><code>ls -la</code></td><td>Ayrıntı ve nokta ile başlayan gizli adlar.</td></tr>
+          <tr><td><code>cd yol</code></td><td>O dizine girer. Yalın <code>cd</code> eve döner.</td></tr>
+          <tr><td><code>cd ..</code></td><td>Bir üst dizine çıkar.</td></tr>
+          <tr><td><code>mkdir ad</code></td><td>Yeni dizin açar.</td></tr>
+          <tr><td><code>cp kaynak hedef</code></td><td>Kopyalar.</td></tr>
+          <tr><td><code>mv kaynak hedef</code></td><td>Taşır ya da adı değiştirir.</td></tr>
+          <tr><td><code>rm dosya</code></td><td>Dosyayı siler. Çöp kutusu yoktur.</td></tr>
+          <tr><td><code>cat dosya</code></td><td>Dosyanın içini ekrana yazar.</td></tr>
+          <tr><td><code>man ls</code></td><td>Kılavuzu açar. Çıkış: <code>q</code></td></tr>
+        </tbody>
+      </table>
+      <div class="kart">
+        <h3>Elinle dene</h3>
+        <pre><code>mkdir ergin-kaplan-deneme
+cd ergin-kaplan-deneme
+echo "Ergin Kaplan Atölyesi" > not.txt
+cat not.txt
+cd ..</code></pre>
+        <p><code>Tab</code> adı tamamlar. Yukarı ok eski komutu getirir. <code>Ctrl+C</code> süren işi keser, dosyayı silmez.</p>
+      </div>
+    </section>
+
+    <section id="yol">
+      <h2>Yol</h2>
+      <p>Yol, dosyanın adresidir. <code>/</code> ile başlıyorsa tam yoldur. Başlamıyorsa bulunduğun yere göredir.</p>
+      <ul>
+        <li><code>/</code> kök. Her şey bunun altındadır.</li>
+        <li><code>~</code> senin ev dizinin.</li>
+        <li><code>.</code> burada. <code>..</code> bir üst.</li>
+      </ul>
+      <p>Şaşırırsan <code>pwd</code> yaz. Nerede olduğunu bilmeden silme.</p>
+    </section>
+
+    <section id="ornekler">
+      <h2>İki küçük program</h2>
+      <p>Komutları, bu depoyu aldığın dizinde yaz. <code>ls</code> içinde <code>ornekler</code> görünmeli.</p>
+
+      <div class="kart">
+        <h3>ergin-kaplan-atolye-merhaba.c</h3>
+        <p>Adını okur, sözcüğün bayt sayısını yazar. Derleyici kaynak kodu çalıştırılabilir dosyaya çevirir.</p>
+        <pre><code>cc -std=c11 -Wall -Wextra -o ergin-kaplan-atolye-merhaba ornekler/ergin-kaplan-atolye-merhaba.c
+./ergin-kaplan-atolye-merhaba
+./ergin-kaplan-atolye-merhaba Ergin</code></pre>
+        <p><code>./</code> "bu dizindeki dosya" demektir. Ad iki sözcükse tırnak gerekir: <code>"Ergin Kaplan"</code>.</p>
+      </div>
+
+      <div class="kart">
+        <h3>ergin-kaplan-atolye-dizin.sh</h3>
+        <p>Dizini silmez. Kim olduğunu, nerede olduğunu ve içeride kaç dosya durduğunu yazar.</p>
+        <pre><code>sh ornekler/ergin-kaplan-atolye-dizin.sh
+sh ornekler/ergin-kaplan-atolye-dizin.sh /tmp</code></pre>
+      </div>
+    </section>
+
+    <section id="dikkat">
+      <h2>Dikkat</h2>
+      <div class="uyari">
+        <p><code>rm</code> sildiğini geri getirmez. Anlamadığın satırda <code>sudo</code> kullanma; o satır yönetici yetkisiyle çalışır. İnternetten kopyalanan uzun komutu, ne yaptığını bilmeden basma.</p>
+        <p>Denemeyi kendi evinde ya da <code>/tmp</code> altında yap. Ergin Kaplan Atölyesi örnekleri kasıtlı olarak dar tutuldu: selam ve dizin özeti.</p>
+      </div>
+      <p>Aynı anlatımın düz yazısı: <a href="ergin-kaplan-atolye-talimat.md">ergin-kaplan-atolye-talimat.md</a></p>
+    </section>
+  </main>
+  <footer>
+    <div class="icerik">
+      <p>© 2026 Ergin Kaplan. Ergin Linux Lab. Ergin Kaplan Atölyesi. Tüm hakları saklıdır.</p>
+      <p>Bu sayfa ve örnekler Ergin Kaplan tarafından atölye için yazıldı. Başka bir kılavuzun kopyası değildir. <a href="BELIRT.md">Hak bildirimi</a>.</p>
+    </div>
+  </footer>
+</body>
+</html>
